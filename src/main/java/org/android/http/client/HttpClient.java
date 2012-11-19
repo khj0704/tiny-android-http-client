@@ -3,7 +3,6 @@ package org.android.http.client;
 import android.os.AsyncTask;
 import org.android.http.client.cache.CacheManager;
 import org.android.http.client.cookie.CookieManager;
-import org.android.http.client.request.HttpException;
 import org.android.http.client.request.HttpMethod;
 import org.android.http.client.request.HttpRequest;
 import org.android.http.client.response.HttpResponse;
@@ -47,7 +46,7 @@ public class HttpClient {
     public HttpResponse executeSync(HttpRequest httpRequest) throws HttpException {
         HttpResponse httpResponse = null;
         try {
-            httpResponse = sendRequest(httpRequest.getPath(),
+            httpResponse = sendRequest(httpRequest.getUrl(),
                     httpRequest.getHttpMethod(), httpRequest.getContentType(),
                     httpRequest.getContent());
         } catch (RuntimeException ex) {
@@ -69,7 +68,7 @@ public class HttpClient {
         int maxRetries = httpRequest.getHttpMethod().isIdemponent() ? MAX_RETRY_TIMES : 0;
         do {
             try {
-                return sendRequest(httpRequest.getPath(), httpRequest.getHttpMethod(),
+                return sendRequest(httpRequest.getUrl(), httpRequest.getHttpMethod(),
                         httpRequest.getContentType(), httpRequest.getContent());
             } catch (Exception e) {
                 if (retryCounter >= maxRetries) {

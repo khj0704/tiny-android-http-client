@@ -1,8 +1,8 @@
+import junit.framework.TestCase;
 import org.android.http.client.HttpClient;
 import org.android.http.client.request.Get;
 import org.android.http.client.response.HttpResponse;
 import org.android.http.client.response.HttpResponseHandler;
-import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,11 +10,10 @@ import java.util.Map;
 /**
  * @author: Daniel
  */
-public class HttpClientTest {
+public class HttpClientTest extends TestCase {
 
-    @Test
     public void testSyncGet() throws Exception {
-        HttpClient client = new HttpClient();
+        HttpClient client = new HttpClient(null, null, null);
         Map<String, String> params = new HashMap<String, String>();
         params.put("start", "0");
         params.put("end", "2");
@@ -23,9 +22,8 @@ public class HttpClientTest {
         System.out.println(resp.getStatus());
     }
 
-    @Test
     public void testAsyncGet() {
-        HttpClient client = new HttpClient();
+        HttpClient client = new HttpClient(null, null, null);
         Map<String, String> params = new HashMap<String, String>();
         params.put("start", "0");
         params.put("end", "2");
@@ -34,6 +32,11 @@ public class HttpClientTest {
             public void onComplete(HttpResponse resp) {
                 System.out.println(resp.getBody());
                 System.out.println(resp.getStatus());
+            }
+
+            @Override
+            public void onError(Exception e) {
+                e.printStackTrace();
             }
         });
     }

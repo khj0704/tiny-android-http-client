@@ -1,4 +1,4 @@
-package org.android.http.client.request;
+package org.android.http.client;
 
 import org.android.http.client.response.HttpResponse;
 
