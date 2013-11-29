@@ -1,6 +1,6 @@
 package org.android.io.httpclient.response;
 
-import com.meiyugames.log.LOG;
+import org.android.io.httpclient.util.LOG;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -26,10 +26,10 @@ import java.util.concurrent.Future;
 
 /**
  * @author Daniel
- * Known issues
- *  The response header could be converted into lower case on some phones, I suggest you always ignore case
- *  when comparing or finding headers, or simply always convert reponse to lower case with
- *   <code>HTTPClientConfig.setResponseHeadersInLowerCase</code> to unify the headers.
+ *         Known issues
+ *         The response header could be converted into lower case on some phones, I suggest you always ignore case
+ *         when comparing or finding headers, or simply always convert reponse to lower case with
+ *         <code>HTTPClientConfig.setResponseHeadersInLowerCase</code> to unify the headers.
  */
 public class HTTPClient {
 

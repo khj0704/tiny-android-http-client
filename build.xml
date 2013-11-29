@@ -1,0 +1,34 @@
+<project name="appnode" default="dist" basedir=".">
+    <!-- set global properties for this build -->
+    <property name="src.main" location="src/main"/>
+    <property file="ant.properties"/>
+    <property name="build.stage" location="build/stage"/>
+    <property name="build.dist" location="build/dist"/>
+
+    <target name="init">
+        <mkdir dir="${build.stage}"/>
+        <mkdir dir="${build.dist}"/>
+    </target>
+
+    <target name="compile" depends="init" description="compile the source ">
+        <javac destdir="${build.stage}" debug="true"
+               target="1.7" includeAntRuntime="no" encoding="utf8">
+            <src path="${src.main}/java"/>
+            <classpath>
+                <fileset dir="${android.sdk.lib}" includes="*.jar"></fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile" description="generate the distribution">
+        <mkdir dir="${build.dist}/lib"/>
+        <jar jarfile="${build.dist}/lib/tiny-http.jar" basedir="${build.stage}"/>
+    </target>
+
+    <target name="clean" description="clean up">
+        <delete dir="${build.stage}"/>
+        <delete dir="${build.dist}"/>
+    </target>
+
+</project>
+
