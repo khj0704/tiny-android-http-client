@@ -1,9 +1,10 @@
-lightweigth-android-http-client
+Tiny Android HTTP Client
 ===============================
 Since android 2.2 Google has deprecated the apache http client and suggest developers to use URLConnection.
-The library has zero dependency and provides the three models to issue http requests. The goal of this project
-is to provide a lightweight zero dependency http library for android, supports pluggable cookie manager and cache manager,
-allow large requests or responses processed by the streaming API.
+he goal of this project is to create a lightweight http library based on URLConnection on android,
+with pluggable cookie manager and cache manager, allow large requests or responses processed by the streaming API.
+
+This library has zero dependency and provides three models to issue http requests:
 
 Model 1: Async request with Callback
 ------------------
