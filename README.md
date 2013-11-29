@@ -5,7 +5,7 @@ The library has zero dependency and provides the three models to issue http requ
 is to provide a lightweight zero dependency http library for android, supports pluggable cookie manager and cache manager,
 allow large requests or responses processed by the streaming API.
 
-Model 1: Send an async request with Callback
+Model 1: Async request with Callback
 ------------------
 This is the simplest call we use in most cases.
 ```
@@ -14,7 +14,7 @@ This is the simplest call we use in most cases.
         Map<String, String> params = new HashMap<String, String>();
         params.put("start", "0");
         params.put("end", "2");
-        client.executeAsync(new HttpRequest.Get("http://www.ggg.cn/webservice/rest/1.0/games", params), new HttpCallback(){
+        client.executeAsync(new HttpRequest.Get("http://abc.com/ws", params), new HttpCallback(){
             @Override
             public void onSuccess(HttpResponse resp) {
                 System.out.println(resp.getBody());
@@ -29,7 +29,7 @@ This is the simplest call we use in most cases.
 Note, when issuing an http request, if your screen rotates the activity will be re-created, your code to update the
 user interface in the onSuccess callback will not work. You need a fragment activity to solve this problem.
 
-Model 2: Send an async request with Future response
+Model 2: Async request with Future
 ------------------
 This is a semi auto rifle, the API returns a standard Future object, so you can check if the work is done or
 cancel the long tasks in another thread. The ideal solution for this is a file download manager, or avatar uploader.
@@ -39,7 +39,7 @@ cancel the long tasks in another thread. The ideal solution for this is a file d
         Map<String, String> params = new HashMap<String, String>();
         params.put("start", "0");
         params.put("end", "2");
-        HTTPClient.FutureResponse resp = client.executeAsync(new HttpRequest.Get("http://www.ggg.cn/webservice/rest/1.0/games", params));
+        HTTPClient.FutureResponse resp = client.executeAsync(new HttpRequest.Get("http://abc.com/ws", params));
         System.out.println(resp.getFuture().isDone()); // check if it's done
         System.out.println(resp.getFuture().get(20, TimeUnit.SECONDS).getBody()); // block at most 20 seconds
         System.out.println(resp.getFuture().get().getBody()); // getFuture() will block until you get the result.
@@ -57,7 +57,7 @@ you will run into callback chains, in that case you can start an AsyncTask to gr
         params.put("start", "0");
         params.put("end", "2");
         // the call below will block, don't do it in main UI thread
-        HttpResponse resp = client.executeSync(new HttpRequest.Get("http://www.ggg.cn/webservice/rest/1.0/games", params));
+        HttpResponse resp = client.executeSync(new HttpRequest.Get("http://abc.com/ws", params));
         System.out.println(resp.getBody());
         System.out.println(resp.getStatus());
 ```
@@ -65,7 +65,7 @@ you will run into callback chains, in that case you can start an AsyncTask to gr
 Customize Headers
 ------------------
 ```
-    HttpResponse resp = client.executeSync(new HttpRequest.Get("http://www.ggg.cn/webservice/rest/1.0/games", params).
+    HttpResponse resp = client.executeSync(new HttpRequest.Get("http://abc.com/ws", params).
             addHeader("name1", "value1").addHeader("name2", "value2"));
 ```
 
@@ -73,7 +73,8 @@ Streaming API
 ------------------
 To download a large file, or upload user avatar, you might use the streaming API.
 ```
-    HttpStreamingResponse resp = client.executeSync(new HttpStreamingRequest.Get("http://www.ggg.cn/download/test.apk", null));
+    HttpStreamingResponse resp = client.executeSync(
+        new HttpStreamingRequest.Get("http://d.com/test.apk", null));
     resp.getInputStream();// download a large file with this stream
 ```
 
