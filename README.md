@@ -89,3 +89,7 @@ Roadmap
 The following features will be supported soon:
 1. a pluggable cache manager which supports 304, max-age, expires etc.
 2. a pluggable persistent cookie manager
+
+Who is using
+------------------
+This lib has been distributed on 11+ millions android devices by Nov 2013 in various apps developed by Shanda games.
