@@ -1,11 +1,11 @@
-package org.android.http.client.request;
+package org.android.io.httpclient.request;
 
+/**
+ * @author Daniel
+ */
 public enum HttpMethod {
 
-    GET(true, false, true),
-    POST(true, true, false),
-    PUT(true, true, true),
-    DELETE(true, false, true),;
+    GET(true, false, true), POST(true, true, false), PUT(true, true, true), DELETE(true, false, true),;
 
     private boolean doInput;
     private boolean doOutput;
