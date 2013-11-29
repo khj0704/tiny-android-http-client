@@ -21,8 +21,8 @@
     </target>
 
     <target name="dist" depends="compile" description="generate the distribution">
-        <mkdir dir="${build.dist}/lib"/>
-        <jar jarfile="${build.dist}/lib/tiny-http.jar" basedir="${build.stage}"/>
+        <mkdir dir="${build.dist}"/>
+        <jar jarfile="${build.dist}/tiny-http.jar" basedir="${build.stage}"/>
     </target>
 
     <target name="clean" description="clean up">
