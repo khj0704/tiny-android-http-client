@@ -12,7 +12,7 @@
 
     <target name="compile" depends="init" description="compile the source ">
         <javac destdir="${build.stage}" debug="true"
-               target="1.7" includeAntRuntime="no" encoding="utf8">
+               source="1.6" target="1.6" includeAntRuntime="no" encoding="utf8">
             <src path="${src.main}/java"/>
             <classpath>
                 <fileset dir="${android.sdk.lib}" includes="*.jar"></fileset>
