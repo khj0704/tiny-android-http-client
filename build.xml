@@ -1,4 +1,4 @@
-<project name="appnode" default="dist" basedir=".">
+<project name="httpclient" default="dist" basedir=".">
     <!-- set global properties for this build -->
     <property name="src.main" location="src/main"/>
     <property file="ant.properties"/>
